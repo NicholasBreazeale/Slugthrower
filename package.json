@@ -1,13 +1,22 @@
 {
 	"name": "Slugthrower",
+	"version": "0.2",
 	"description": "Dice roller for the Star Wars Roleplaying game by Fantasy Flight Games.",
-	"version": "0.1",
 	"main": "bot.js",
 	"scripts": {
 		"start": "node bot.js"
 	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/NicholasBreazeale/Slugthrower.git"
+	},
+	"keywords": [],
+	"author": "Nicholas Breazeale",
+	"bugs": {
+		"url": "https://github.com/NicholasBreazeale/Slugthrower/issues"
+	},
+	"homepage": "https://github.com/NicholasBreazeale/Slugthrower#readme",
 	"dependencies": {
-		"discord.js": "12.3.1",
-		"request": "2.81.0"
+		"discord.js": "^12.3.1"
 	}
 }
