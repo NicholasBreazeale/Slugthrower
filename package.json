@@ -1,6 +1,6 @@
 {
 	"name": "Slugthrower",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "Dice roller for the Star Wars Roleplaying game by Fantasy Flight Games.",
 	"main": "bot.js",
 	"scripts": {

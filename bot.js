@@ -77,6 +77,11 @@ client.on("ready", () => {
 });
 
 client.on('message', msg => {
+	// Ignore messages from self
+	if (msg.client === client) {
+		return;
+	}
+
 	let command = msg.content.split(" ")[0];
 	if (command !== "/swr" && command !== "/swroll") {
 		return;
@@ -88,6 +93,7 @@ client.on('message', msg => {
 	let matchedStr = str.match(/([0-9]+[a|b|c|d|f|p|s]\s*)+/i);
 	if (matchedStr === null || str !== matchedStr[0]) {
 		msg.reply("Blargh!");
+		return
 	}
 	
 	// Parse dice notation
