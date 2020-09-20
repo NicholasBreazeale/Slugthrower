@@ -77,11 +77,6 @@ client.on("ready", () => {
 });
 
 client.on('message', msg => {
-	// Ignore messages from self
-	if (msg.client === client) {
-		return;
-	}
-
 	let command = msg.content.split(" ")[0];
 	if (command !== "/swr" && command !== "/swroll") {
 		return;
