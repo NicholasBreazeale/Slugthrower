@@ -12,6 +12,7 @@
 	},
 	"keywords": [],
 	"author": "Nicholas Breazeale",
+	"license": "GNU AGPLv3",
 	"bugs": {
 		"url": "https://github.com/NicholasBreazeale/Slugthrower/issues"
 	},
