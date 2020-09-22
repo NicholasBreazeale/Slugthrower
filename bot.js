@@ -85,7 +85,7 @@ client.on('message', msg => {
 	let str = msg.content.substring(command.length).trim();
 	
 	// Validate string
-	let matchedStr = str.match(/([0-9]+[a|b|c|d|f|p|s]\s*)+/i);
+	let matchedStr = str.match(/([0-9]+[abcdfps]\s*)+/);
 	if (matchedStr === null || str !== matchedStr[0]) {
 		msg.reply("Blargh!");
 		return
@@ -93,7 +93,7 @@ client.on('message', msg => {
 	
 	// Parse dice notation
 	let diceCount = [], diceType = [];
-	for (let i = 0, args = str.match(/[0-9]+|[a|b|c|d|f|p|s]/gi); i < args.length; i++) {
+	for (let i = 0, args = str.match(/[0-9]+|[abcdfps]/g); i < args.length; i++) {
 		diceCount.push(Number(args[i]));
 		i++;
 		diceType.push(args[i]);
