@@ -76,8 +76,7 @@ client.on("ready", () => {
 	console.log(`Logged in as ${client.user.tag}!`);
 	// Get emoji from master guild
 	for (const [key, value] of client.guilds.cache.get(process.env.MASTER_GUILD_ID).emojis.cache) {
-		str = "<:" + value.name + ":" + value.id + ">";
-		sw_emojis[value.name] = str;
+		sw_emojis[value.name] = "<:" + value.name + ":" + value.id + ">";
 	}
 });
 
