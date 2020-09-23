@@ -67,6 +67,11 @@ const dice = {
 	f: new result("force", [15,15,15,15,15,15,16,13,13,14,14,14]),
 };
 
+function fullMatch(str, regex) {
+	let matchedStr = str.match(regex);
+	return (matchedStr !== null && matchedStr[0] === str);
+}
+
 client.on("ready", () => {
 	console.log(`Logged in as ${client.user.tag}!`);
 	// Get emoji from master guild
@@ -81,38 +86,55 @@ client.on('message', msg => {
 	if (command !== "/swr" && command !== "/swroll") {
 		return;
 	}
-	
+
 	let str = msg.content.substring(command.length).trim();
-	
-	// Validate string
-	let matchedStr = str.match(/([0-9]+[abcdfps]\s*)+/);
-	if (matchedStr === null || str !== matchedStr[0]) {
-		msg.reply("Blargh!");
-		return
+
+	// d10/d100 + mod
+	if (fullMatch(str, /^d100?(\s*\+\s*[0-9]+)?$/)) {
+		let args = str.match(/[0-9]+/g);
+		let replyMsg = "";
+
+		// Roll die
+		let rand = Math.floor(Math.random() * Number(args[0]));
+		replyMsg = "(" + rand.toString() + ") ";
+
+		// Add modifier (if available)
+		if (args.length === 2) {
+			replyMsg += "+ " + args[1] + " = " + (rand + Number(args[1])).toString();
+		} else {
+			replyMsg += "= " + rand.toString();
+		}
+
+		msg.reply(replyMsg);
+		return;
 	}
-	
-	// Parse dice notation
-	let diceCount = [], diceType = [];
-	for (let i = 0, args = str.match(/[0-9]+|[abcdfps]/g); i < args.length; i++) {
-		diceCount.push(Number(args[i]));
-		i++;
-		diceType.push(args[i]);
-	}
-	
-	// Roll dice
-	let res = new result();
-	for (let i = 0; i < diceCount.length; i++) {
-		let die = dice[diceType[i]];
-		for (let j = 0; j < diceCount[i]; j++) {
-			let r = diceResults[die.value[Math.floor(Math.random() * die.value.length)]];
-			res.title += sw_emojis[(die.title !== "force" ? (die.title + "_") : "") + r.title];
-			for (let k = 0; k < 6; k++) {
-				res.value[k] += r.value[k];
+
+	// SWFFG dice
+	if (fullMatch(str, /([0-9]+[abcdfps]\s*)+/)) {
+		let args = str.match(/[0-9]+|[abcdfps]/g);
+
+		// Roll dice
+		let res = new result();
+		for (let i = 0; i < args.length; i += 2) {
+			let die = dice[args[i+1]];
+			for (let j = 0; j < Number(args[i]); j++) {
+				let r = diceResults[die.value[Math.floor(Math.random() * die.value.length)]];
+
+				// Concatenate emoji
+				res.title += sw_emojis[(die.title !== "force" ? (die.title + "_") : "") + r.title];
+				// Add array values
+				for (let k = 0; k < 6; k++) {
+					res.value[k] += r.value[k];
+				}
 			}
 		}
+
+		msg.reply(res.toString());
+		return;
 	}
-	
-	msg.reply(res.toString());
+
+	// No valid roll query
+	msg.reply("Blargh!");
 });
 
 client.login(process.env.TOKEN);
