@@ -88,6 +88,11 @@ client.on('message', msg => {
 
 	let str = msg.content.substring(command.length).trim();
 
+	if (str === "help") {
+		msg.reply("Usage guide can be found here: https://github.com/NicholasBreazeale/Slugthrower#slugthrower");
+		return;
+	}
+
 	// d10/d100 + mod
 	if (fullMatch(str, /^d100?(\s*\+\s*[0-9]+)?$/)) {
 		let args = str.match(/[0-9]+/g);
