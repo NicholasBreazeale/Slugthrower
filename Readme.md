@@ -32,3 +32,17 @@ Examples:
 - /swr d100 + 20
 
 *Note: Triumph and despair automatically add a success and failure respectively.*
+
+## Running Your Own Bot
+
+1. Go to the [Discord Developer Portal](https://discord.com/developers/applications) and create a new application.
+2. Enter the app and add a bot to it.
+3. Replace "process.env.TOKEN" in the bot.js file with the bot's token.
+4. Enable developer mode in your Discord client. (Settings > Appearance > Advanced > Developer Mode)
+5. Right click your server icon and click "Copy ID" and replace "process.env.MASTER_GUILD_ID" in the bot.js file with the copied ID.
+6. Open the folder containing the bot's files in a command window/terminal and enter "npm install".
+7. Once installation is complete, enter "npm start". Use this command any time you want to start the bot.
+
+### Heroku
+
+If you want to instead run this bot from Heroku, don't edit the bot.js file as seen in steps 3 and 5. Instead, set config vars to the respective values. Once the bot is running, be sure to have the **web** dyno resource disabled and the **worker** dyno enabled.
