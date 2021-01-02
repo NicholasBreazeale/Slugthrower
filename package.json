@@ -18,7 +18,7 @@
 	},
 	"homepage": "https://github.com/NicholasBreazeale/Slugthrower#readme",
 	"dependencies": {
-		"discord.js": "^12.3.1"
+		"discord.js": "^12.5.1"
 	},
 	"engines": {
 		"node": "12.18.3",
