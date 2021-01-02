@@ -1,0 +1,11 @@
+{
+	"boost": ["blank","blank","success","success_advantage","advantage2","advantage"],
+	"ability": ["blank","success","success","success2","advantage","advantage","success_advantage","advantage2"],
+	"proficiency": ["blank","success","success","success2","success2","advantage","success_advantage","success_advantage","success_advantage","advantage2","advantage2","triumph"],
+
+	"setback": ["blank","blank","failure","failure","threat","threat"],
+	"difficulty": ["blank","failure","failure2","threat","threat","threat","threat2","failure_threat"],
+	"challenge": ["blank","failure","failure","failure2","failure2","threat","threat","failure_threat","failure_threat","threat2","threat2","despair"],
+
+	"force": ["dark","dark","dark","dark","dark","dark","dark2","light","light","light2","light2","light2"]
+}

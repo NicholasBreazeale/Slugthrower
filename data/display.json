@@ -1,0 +1,4 @@
+{
+	"positive": ["success", "advantage", "triumph", "despair", "force_light", "force_dark"],
+	"negative": ["failure", "threat"]
+}
