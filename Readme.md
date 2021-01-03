@@ -46,4 +46,4 @@ Examples:
 
 ### Heroku
 
-If you want to instead run this bot from Heroku, don't edit the bot.js file as seen in steps 3 and 5. Instead, set config vars to the respective values. Once the bot is running, be sure to have the **web** dyno resource disabled and the **worker** dyno enabled.
+If you want to instead run this bot from Heroku, don't edit the bot.js file as seen in steps 3 and 6. Instead, set config vars to the respective values. Once the bot is running, be sure to have the **web** dyno resource disabled and the **worker** dyno enabled.
