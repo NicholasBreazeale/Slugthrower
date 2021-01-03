@@ -2,7 +2,7 @@
 
 Discord bot for rolling the special dice from the Star Wars Roleplaying game by Fantasy Flight Games. Die rolls use custom emoji and totals are displayed separately for easy readability.
 
-[Invite](https://discord.com/api/oauth2/authorize?client_id=253751620356014080&permissions=0&scope=bot)
+[Invite](https://discord.com/api/oauth2/authorize?client_id=253751620356014080&permissions=264192&scope=bot)
 
 Usage:
 ```
