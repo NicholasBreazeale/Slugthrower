@@ -26,7 +26,7 @@ client.on("message", msg => {
 		return;
 	}
 
-	const diceFormula = args.join("");
+	const diceFormula = args.join("").toLowerCase();
 
 	// Redirect a help command to the github page
 	if (diceFormula === "help") {
@@ -43,14 +43,19 @@ client.on("message", msg => {
 	}
 
 	// SWFFG dice
-	if (fullMatch(diceFormula, /([0-9]+[abcdfps])+/)) {
+	if (fullMatch(diceFormula, /([0-9]+[a-z])+/)) {
 		const rolls = [];
 		const resultArr = results["init"].slice();
 
 		// Roll dice
-		diceFormula.match(/[0-9]+[abcdfps]/g).forEach(currentValue => {
+		diceFormula.match(/[0-9]+[a-z]/g).forEach(currentValue => {
 			const dieCount = Number(currentValue.slice(0, -1));
 			const dieType = Object.keys(dice).find(element => element[0] === currentValue.slice(-1));
+			// Could not find the appropriate die type
+			if (dieType === undefined) {
+				msg.reply("Blarg!");
+				return;
+			}
 
 			for (let i = 0; i < dieCount; i++) {
 				let roll = dice[dieType][Math.floor(Math.random() * dice[dieType].length)];
