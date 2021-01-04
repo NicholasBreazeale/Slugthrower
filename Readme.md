@@ -37,13 +37,15 @@ Examples:
 
 1. Go to the [Discord Developer Portal](https://discord.com/developers/applications) and create a new application.
 2. Enter the app and add a bot to it.
-3. Replace "process.env.TOKEN" in the bot.js file with the bot's token.
-4. In your Discord client, create a new server and add all the custom emoji.
-5. Enable developer mode in your Discord client. (Settings > Appearance > Advanced > Developer Mode)
-6. Right click your server icon, click "Copy ID", and replace "process.env.MASTER_GUILD_ID" in the bot.js file with the copied ID.
-7. Open the folder containing the bot's files in a command window/terminal and enter "npm install".
-8. Once installation is complete, enter "npm start". Use this command any time hereafter to start the bot.
+3. In your Discord client, create a new server and add all the custom emoji.
+4. Open the folder containing the bot's files in a command window/terminal and enter "npm install".
+5. Set the following environment variables in the terminal:
+	1. TOKEN = The bot's token.
+	2. MASTER_GUILD_ID = The server ID with the cusom emoji ([finding the ID](https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-)).
+6. Enter "npm start".
+
+Repeat steps 5 and 6 to restart the bot.
 
 ### Heroku
 
-If you want to instead run this bot from Heroku, don't edit the bot.js file as seen in steps 3 and 6. Instead, set config vars to the respective values. Once the bot is running, be sure to have the **web** dyno resource disabled and the **worker** dyno enabled.
+If you want to instead run this bot from Heroku, set the environment variables in the app's config vars. Once the bot is running, be sure to enable only the **worker** dyno.
