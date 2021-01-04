@@ -21,12 +21,12 @@ client.on("ready", () => {
 });
 
 client.on("message", msg => {
-	const [command, ...args] = msg.content.split(/\s+/);
+	const [command, ...args] = msg.content.toLowerCase().split(/\s+/);
 	if (command !== "/swr" && command !== "/swroll") {
 		return;
 	}
 
-	const diceFormula = args.join("").toLowerCase();
+	const diceFormula = args.join("");
 
 	// Redirect a help command to the github page
 	if (diceFormula === "help") {
